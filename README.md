@@ -4,7 +4,12 @@ A example on how to connect to salesforce through rest api
 and complete end to end scenario using Behat in a BDD way.
 Just to reduce lengthy E2E tests.
 
-#pre-requisites
+# pre-requisites
+
+To authenticate with Salesforce, you need to define it as a new connected app within the
+Salesforce organization that informs Salesforce of this new authentication entry point.
+more on how to
+https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_defining_remote_access_applications.htm
 
 User/Test must know authentication methods used for salesforce.
 Username-password authentication is used for this example purpose.
@@ -17,13 +22,19 @@ This need below parameters for while requesting authentication
 https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_username_password_oauth_flow.htm
 
 
-#install
+# install
 
 1.git clone https://github.com/nirbhaypatil/behat-salesforce.git
 OR
 2.download zip folder
 
-Use composer install command to download all libs in vendor
+Use composer install command to download required libs.
+
+Next use SalesforceContext.php in yml and necessary step definition can be written.
+
+Use the Query resource to execute a SOQL query that returns all the results in a single response.
+
+ $query = 'SELECT Id,Name FROM ACCOUNT LIMIT 100';
 
 
 
