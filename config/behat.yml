@@ -1,0 +1,45 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      default_session: chrome
+      javascript_session: chrome
+      browser_name: chrome
+      sessions:
+        firefox:
+          selenium2:
+            capabilities: {"browser" :"firefox", "browserName" :"firefox"}
+            wd_host:        'http://127.0.0.1:4444/wd/hub'
+        chrome:
+          selenium2:
+            capabilities: {"browser" :"Chrome", "browserName" :"Chrome", "chrome": {'switches':['--start-maximized']}}
+            wd_host:        'http://127.0.0.1:4444/wd/hub'
+      base_url:         'http://www.example.com/'
+    Drupal\DrupalExtension:
+      blackbox: ~
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages--error'
+      region_map:
+        tablist: ".bar"
+      drush:
+        alias: 'foo'
+
+  suites:
+    default:
+      paths:
+        - %paths.base%/../features/
+      contexts:
+        - Salesforce\Context\SalesforceContext:
+            parameters:
+              options:
+                grant_type: 'password'
+                client_id: 'client.id'
+                client_secret: 'abcd'
+                username: 'test@example.com'
+                password: 'password@abcd'
+              end point: 'https://test.salesforce.com/'
+  formatters:
+    pretty: true
+    junit:
+      output_path: %paths.base%/../reports/junit
