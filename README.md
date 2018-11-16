@@ -22,13 +22,15 @@ This need below parameters for while requesting authentication
 https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_username_password_oauth_flow.htm
 
 
-# install
+# Install:
 
-1.git clone https://github.com/nirbhaypatil/behat-salesforce.git
+git clone https://github.com/nirbhaypatil/behat-salesforce.git
 OR
-2.download zip folder
+download zip folder
 
 Use composer install command to download required libs.
+
+# How to use:
 
 Next use SalesforceContext.php in yml and necessary step definition can be written.
 
